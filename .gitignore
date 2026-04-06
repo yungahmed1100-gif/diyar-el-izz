@@ -18,3 +18,10 @@ yarn-error.log*
 *.temp
 *.swp
 *~
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
