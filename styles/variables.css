@@ -1,0 +1,23 @@
+:root {
+  --teal:           #3ABFBF;
+  --teal-dark:      #2A9090;
+  --teal-deeper:    #1E6B6B;
+  --teal-light:     #7FDBDB;
+  --teal-mist:      #E6F7F7;
+  --gold:           #C5A028;
+  --gold-light:     #E8C85A;
+  --charcoal:       #1A1A2E;
+  --graphite:       #2E2E3A;
+  --slate:          #4A4A5A;
+  --muted:          #7A7A8A;
+  --border:         #D8DCE0;
+  --surface:        #F5F7FA;
+  --white:          #FFFFFF;
+  --font-ar:        'Cairo', 'Tajawal', sans-serif;
+  --transition:     250ms ease;
+  --radius:         12px;
+  --shadow:         0 4px 24px rgba(0,0,0,0.09);
+  --shadow-teal:    0 8px 32px rgba(58,191,191,0.22);
+  --navbar-h:       76px;
+  --container:      1240px;
+}

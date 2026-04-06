@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="title">
+  <title>ديار العز للتطوير العقاري</title>
+  <rect width="400" height="400" fill="#ffffff"/>
+  <g fill="#2ea69c">
+    <path d="M72 262h31v-69l42-21v-70l79-35v173h31V134l29 16v112h29V80l-79 34v-5l-79 32v91H72z"/>
+    <path d="M162 255h96v-10H162z" opacity="0.3"/>
+    <path d="M175 222h70v-9h-70z" opacity="0.3"/>
+    <path d="M176 190h66v-9h-66z" opacity="0.3"/>
+    <path d="M177 157h62v-9h-62z" opacity="0.3"/>
+  </g>
+  <text x="200" y="300" text-anchor="middle" fill="#166d6a" font-family="Tajawal, Cairo, sans-serif" font-size="34" font-weight="700">ديار العز</text>
+  <text x="200" y="343" text-anchor="middle" fill="#2ea69c" font-family="Tajawal, Cairo, sans-serif" font-size="18" font-weight="600">للتطوير العقاري</text>
+</svg>

@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ديار العز للتطوير العقاري - مقاولات وتطوير عقاري بمعايير عالمية في مصر" />
+  <title>ديار العز للتطوير العقاري</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/variables.css" />
+  <link rel="stylesheet" href="styles/global.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <link rel="stylesheet" href="styles/rtl.css" />
+
+  <style>
+    /* ── NAVBAR ───────────────────────────────────────────────── */
+    .navbar {
+      position: fixed;
+      top: 0; right: 0; left: 0;
+      z-index: 500;
+      height: var(--navbar-h);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow var(--transition);
+    }
+    .navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+    .navbar-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    /* ── LOGO PLACEHOLDER ── replace src with your logo.png */
+    .logo-img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: var(--teal-mist);
+      border: 2px dashed var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .logo-img img { width: 100%; height: 100%; object-fit: contain; }
+    .logo-placeholder-text {
+      font-size: 0.6rem;
+      color: var(--teal);
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .navbar-brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .brand-name-ar {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--charcoal);
+    }
+    .brand-name-en {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--teal);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .navbar-menu a {
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--slate);
+      transition: all var(--transition);
+    }
+    .navbar-menu a:hover,
+    .navbar-menu a.active {
+      color: var(--teal);
+      background: var(--teal-mist);
+    }
+    .navbar-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--charcoal);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--navbar-h);
+      right: 0; left: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      z-index: 499;
+      flex-direction: column;
+      gap: 0.5rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 0.65rem 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      border-radius: 8px;
+      transition: all var(--transition);
+    }
+    .mobile-menu a:hover { background: var(--teal-mist); color: var(--teal); }
+
+    /* ── HERO ─────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--charcoal) 0%, #0D1B2A 100%);
+    }
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(58,191,191,0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(197,160,40,0.08) 0%, transparent 40%);
+    }
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(58,191,191,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(58,191,191,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 8rem 2rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-text .tag-line { color: var(--teal-light); }
+    .hero-title {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title span { color: var(--teal); }
+    .hero-desc {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.9;
+      max-width: 480px;
+      margin-bottom: 2rem;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .hero-visual {
+      position: relative;
+    }
+    .hero-card-stack {
+      position: relative;
+      height: 420px;
+    }
+    .hero-stat-card {
+      position: absolute;
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 1.5rem;
+      color: var(--white);
+    }
+    .hero-stat-card.card-main {
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: rgba(58,191,191,0.1);
+      border-color: rgba(58,191,191,0.3);
+    }
+    .hero-stat-card.card-1 {
+      bottom: 2rem;
+      right: -1rem;
+      width: 180px;
+      background: rgba(255,255,255,0.09);
+    }
+    .hero-stat-card.card-2 {
+      top: 1rem;
+      left: -1rem;
+      width: 180px;
+      background: rgba(197,160,40,0.12);
+      border-color: rgba(197,160,40,0.3);
+    }
+    .stat-num { font-size: 2.4rem; font-weight: 900; color: var(--teal); }
+    .stat-lbl { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 0.25rem; }
+    .hero-main-icon {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+    }
+    .hero-main-txt {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .hero-main-sub {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.35rem;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.75rem;
+      animation: fadeIn 1s 1.5s both;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(58,191,191,0.7), transparent);
+      animation: fadeIn 1s 2s both;
+    }
+
+    /* ── STATS BAR ────────────────────────────────────────────── */
+    .stats-bar {
+      background: var(--charcoal);
+      padding: 3rem 0;
+    }
+    .stats-bar .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-item { padding: 1rem; }
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--teal);
+      display: block;
+    }
+    .stat-suffix { color: var(--gold); font-size: 1.8rem; }
+    .stat-label {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.4rem;
+    }
+
+    /* ── ABOUT ────────────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-box {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--teal-mist), var(--surface));
+      border-radius: 20px;
+      border: 2px dashed var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .about-img-box img { width: 100%; height: 100%; object-fit: cover; }
+    .about-img-placeholder {
+      text-align: center;
+      color: var(--teal);
+    }
+    .about-img-placeholder svg { width: 64px; height: 64px; opacity: 0.4; margin-bottom: 0.75rem; }
+    .about-img-placeholder p { font-size: 0.85rem; color: var(--muted); }
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      left: -1.5rem;
+      background: var(--teal);
+      color: var(--white);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow-teal);
+      text-align: center;
+    }
+    .about-badge-num {
+      font-size: 2rem;
+      font-weight: 900;
+      display: block;
+    }
+    .about-badge-lbl { font-size: 0.8rem; opacity: 0.9; }
+    .about-features {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--surface);
+      border-radius: 10px;
+      border-right: 3px solid var(--teal);
+    }
+    .feature-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .feature-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+    .feature-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ── SERVICES ─────────────────────────────────────────────── */
+    .services-header { text-align: center; margin-bottom: 3.5rem; }
+    .services-header .accent-bar { margin: 1rem auto 1.5rem; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.25rem 2rem;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--gold));
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform var(--transition);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover {
+      box-shadow: var(--shadow);
+      border-color: var(--teal-light);
+      transform: translateY(-4px);
+    }
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      background: var(--teal-mist);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .service-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      margin-bottom: 0.6rem;
+    }
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--teal);
+      transition: gap var(--transition);
+    }
+    .service-link:hover { gap: 0.75rem; }
+
+    /* ── PROJECTS ─────────────────────────────────────────────── */
+    .projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .project-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+    }
+    .project-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      background: linear-gradient(135deg, var(--teal-mist) 0%, var(--surface) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-img img { width: 100%; height: 100%; object-fit: cover; }
+    .project-img-placeholder {
+      text-align: center;
+      color: var(--teal);
+      opacity: 0.5;
+    }
+    .project-img-placeholder svg { width: 48px; height: 48px; }
+    .project-img-placeholder p { font-size: 0.8rem; margin-top: 0.5rem; }
+    .project-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--teal);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+    }
+    .project-badge.ongoing { background: var(--gold); }
+    .project-info { padding: 1.5rem; }
+    .project-category {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+    .project-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+    .project-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .project-meta span { display: flex; align-items: center; gap: 0.3rem; }
+
+    /* ── WHY US ───────────────────────────────────────────────── */
+    .why-wrap {
+      background: linear-gradient(135deg, var(--charcoal) 0%, #0D1B2A 100%);
+      border-radius: 24px;
+      padding: 5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-wrap::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(58,191,191,0.12), transparent 70%);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .why-text .tag-line { color: var(--teal-light); }
+    .why-text .section-title { color: var(--white); }
+    .why-text .section-subtitle { color: rgba(255,255,255,0.6); }
+    .why-list {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .why-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .why-check {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(58,191,191,0.15);
+      border: 1px solid rgba(58,191,191,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--teal);
+      font-size: 1rem;
+    }
+    .why-item-text h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+    .why-item-text p { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+    .why-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .why-stat-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 1.75rem;
+      text-align: center;
+      transition: all var(--transition);
+    }
+    .why-stat-box:hover {
+      background: rgba(58,191,191,0.1);
+      border-color: rgba(58,191,191,0.3);
+    }
+    .why-stat-num {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--teal);
+      display: block;
+    }
+    .why-stat-lbl {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.4rem;
+    }
+
+    /* ── CONTACT ──────────────────────────────────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info-card {
+      background: var(--charcoal);
+      border-radius: 20px;
+      padding: 2.5rem;
+      color: var(--white);
+    }
+    .contact-info-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .contact-info-sub {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2rem;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .contact-detail:last-of-type { border-bottom: none; }
+    .contact-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(58,191,191,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-detail-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.2rem;
+    }
+    .contact-detail-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .contact-whatsapp-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      padding: 1rem 1.5rem;
+      background: #25D366;
+      border-radius: 12px;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all var(--transition);
+      justify-content: center;
+    }
+    .contact-whatsapp-btn:hover {
+      background: #1da851;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37,211,102,0.4);
+    }
+    .contact-form { background: var(--surface); border-radius: 20px; padding: 2.5rem; }
+    .form-title { font-size: 1.4rem; font-weight: 800; color: var(--charcoal); margin-bottom: 0.5rem; }
+    .form-sub { font-size: 0.9rem; color: var(--muted); margin-bottom: 2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: var(--font-ar);
+      font-size: 0.92rem;
+      color: var(--charcoal);
+      background: var(--white);
+      transition: border-color var(--transition);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(58,191,191,0.12);
+    }
+    .form-group textarea { height: 130px; resize: vertical; }
+
+    /* ── FOOTER ───────────────────────────────────────────────── */
+    .footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.65);
+      padding: 4rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand { display: flex; flex-direction: column; }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .footer-logo-img {
+      width: 46px;
+      height: 46px;
+      background: var(--teal-mist);
+      border-radius: 8px;
+      border: 2px dashed var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .footer-logo-img img { width: 100%; height: 100%; object-fit: contain; }
+    .footer-brand-name { font-size: 1rem; font-weight: 800; color: var(--white); }
+    .footer-brand-desc { font-size: 0.88rem; line-height: 1.85; color: rgba(255,255,255,0.5); }
+    .footer-social {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+    .social-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      transition: all var(--transition);
+      color: rgba(255,255,255,0.6);
+    }
+    .social-btn:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    .footer-col h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 30px; height: 2px;
+      background: var(--teal);
+      border-radius: 2px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.65rem; }
+    .footer-col ul li a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      transition: color var(--transition);
+      display: inline-block;
+    }
+    .footer-col ul li a:hover { color: var(--teal); transform: translateX(-4px); }
+    .footer-bottom {
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+    }
+    .footer-bottom a { color: var(--teal); }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero-content    { grid-template-columns: 1fr; }
+      .hero-visual     { display: none; }
+      .about-grid      { grid-template-columns: 1fr; }
+      .services-grid   { grid-template-columns: 1fr 1fr; }
+      .projects-grid   { grid-template-columns: 1fr 1fr; }
+      .contact-grid    { grid-template-columns: 1fr; }
+      .footer-grid     { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .stats-bar .container { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .navbar-menu, .navbar-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-title { font-size: 2rem; }
+      .hero-cta   { flex-direction: column; }
+      .services-grid  { grid-template-columns: 1fr; }
+      .projects-grid  { grid-template-columns: 1fr; }
+      .why-grid       { grid-template-columns: 1fr; }
+      .why-wrap       { padding: 3rem 2rem; }
+      .form-row       { grid-template-columns: 1fr; }
+      .footer-grid    { grid-template-columns: 1fr; }
+      .footer-bottom  { flex-direction: column; gap: 0.75rem; text-align: center; }
+      .about-badge    { bottom: -1rem; left: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <!-- LOGO PLACEHOLDER — replace with: <img src="assets/images/logo/logo.png" alt="ديار العز"> -->
+        <div class="logo-img">
+          <img src="assets/images/logo/logo.svg" alt="ديار العز"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <span class="logo-placeholder-text" style="display:none;">LOGO<br>هنا</span>
+        </div>
+        <div class="navbar-brand">
+          <span class="brand-name-ar">ديار العز</span>
+          <span class="brand-name-en">Diyar Al-Ezz Development</span>
+        </div>
+      </a>
+
+      <ul class="navbar-menu">
+        <li><a href="#home" class="active">الرئيسية</a></li>
+        <li><a href="#about">من نحن</a></li>
+        <li><a href="#services">خدماتنا</a></li>
+        <li><a href="#projects">مشاريعنا</a></li>
+        <li><a href="#contact">تواصل معنا</a></li>
+      </ul>
+
+      <div class="navbar-cta">
+        <a href="https://wa.me/201033232243?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%AF%D9%8A%D8%A7%D8%B1%20%D8%A7%D9%84%D8%B9%D8%B2" target="_blank" class="btn btn-primary" style="font-size:0.85rem;padding:0.6rem 1.3rem;">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096 4.436 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          واتساب
+        </a>
+      </div>
+
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" onclick="toggleMenu()">الرئيسية</a>
+    <a href="#about" onclick="toggleMenu()">من نحن</a>
+    <a href="#services" onclick="toggleMenu()">خدماتنا</a>
+    <a href="#projects" onclick="toggleMenu()">مشاريعنا</a>
+    <a href="#contact" onclick="toggleMenu()">تواصل معنا</a>
+    <a href="https://wa.me/201033232243?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%AF%D9%8A%D8%A7%D8%B1%20%D8%A7%D9%84%D8%B9%D8%B2" target="_blank" class="btn btn-primary" style="justify-content:center;margin-top:0.5rem;">واتساب</a>
+  </div>
+
+
+  <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-grid-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="tag-line anim-fade-up">ديار العز للتطوير العقاري</span>
+        <h1 class="hero-title anim-fade-up delay-1">
+          نبني <span>أحلامك</span><br />بمعايير عالمية
+        </h1>
+        <p class="hero-desc anim-fade-up delay-2">
+          شركة رائدة في المقاولات والتطوير العقاري بمصر — نقدم مشاريع سكنية وتجارية
+          عالية الجودة بأحدث الأساليب الهندسية وخبرة تمتد لسنوات.
+        </p>
+        <div class="hero-cta anim-fade-up delay-3">
+          <a href="#projects" class="btn btn-primary">استعرض مشاريعنا</a>
+          <a href="#contact" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);">تواصل معنا</a>
+        </div>
+      </div>
+
+      <div class="hero-visual anim-scale-in delay-2">
+        <div class="hero-card-stack">
+          <div class="hero-stat-card card-main">
+            <div class="hero-main-icon">🏗️</div>
+            <div class="hero-main-txt">مشاريع بمعايير دولية</div>
+            <div class="hero-main-sub">تطوير عقاري — مقاولات — استشارات</div>
+          </div>
+          <div class="hero-stat-card card-1">
+            <span class="stat-num">+50</span>
+            <div class="stat-lbl">مشروع منجز</div>
+          </div>
+          <div class="hero-stat-card card-2">
+            <span class="stat-num" style="color:var(--gold-light)">100%</span>
+            <div class="stat-lbl">رضا العملاء</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>مرر للأسفل</span>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════ STATS BAR ═══════════════════════════ -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stat-item reveal">
+        <span class="stat-number"><span class="counter" data-target="50">0</span><span class="stat-suffix">+</span></span>
+        <div class="stat-label">مشروع منجز</div>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-number"><span class="counter" data-target="10">0</span><span class="stat-suffix">+</span></span>
+        <div class="stat-label">سنوات خبرة</div>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-number"><span class="counter" data-target="200">0</span><span class="stat-suffix">+</span></span>
+        <div class="stat-label">عميل راضٍ</div>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-number"><span class="counter" data-target="100">0</span><span class="stat-suffix">%</span></span>
+        <div class="stat-label">التزام بالمواعيد</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════ ABOUT ═══════════════════════════ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <div class="about-img-box">
+            <img src="assets/images/logo/logo.svg" alt="صورة الشركة"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="about-img-placeholder" style="display:none;flex-direction:column;align-items:center;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+              <p>صورة الشركة</p>
+            </div>
+          </div>
+          <div class="about-badge">
+            <span class="about-badge-num">+10</span>
+            <span class="about-badge-lbl">سنوات من الخبرة</span>
+          </div>
+        </div>
+
+        <div class="about-content reveal">
+          <span class="tag-line">من نحن</span>
+          <h2 class="section-title">شركة رائدة في قطاع المقاولات والتطوير العقاري</h2>
+          <div class="accent-bar"></div>
+          <p class="section-subtitle">
+            ديار العز للتطوير العقاري شركة مصرية متخصصة في المقاولات العامة والتطوير العقاري،
+            تأسست بهدف تقديم مشاريع عمرانية راقية تجمع بين الجودة والابتكار والالتزام
+            بالمواعيد، لنكون الخيار الأول للمستثمرين وأصحاب المشاريع في مصر.
+          </p>
+          <p class="section-subtitle" style="margin-top:0.75rem;">
+            نقدم خدماتنا في القاهرة والمحافظات المختلفة، مع فريق هندسي متخصص
+            يضم مهندسين وخبراء ذوي كفاءة عالية يحرصون على تحقيق رؤية كل عميل.
+          </p>
+
+          <div class="about-features">
+            <div class="feature-item">
+              <span class="feature-icon">🏆</span>
+              <div>
+                <div class="feature-title">جودة موثوقة</div>
+                <div class="feature-desc">مواد بناء من أعلى المصادر</div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">⏱️</span>
+              <div>
+                <div class="feature-title">التزام بالمواعيد</div>
+                <div class="feature-desc">تسليم في الوقت المحدد دائماً</div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">💡</span>
+              <div>
+                <div class="feature-title">تصميم مبتكر</div>
+                <div class="feature-desc">حلول هندسية عصرية ومتطورة</div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🤝</span>
+              <div>
+                <div class="feature-title">شفافية تامة</div>
+                <div class="feature-desc">تعاملات واضحة مع العملاء</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════ SERVICES ═══════════════════════════ -->
+  <section class="section section-alt" id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <span class="tag-line">ما نقدمه</span>
+        <h2 class="section-title">خدماتنا</h2>
+        <div class="accent-bar"></div>
+        <p class="section-subtitle" style="max-width:550px;margin:0 auto;">
+          نقدم باقة متكاملة من خدمات البناء والتطوير العقاري بأعلى معايير الجودة
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card card-lift reveal">
+          <div class="service-icon">🏗️</div>
+          <div class="service-title">المقاولات العامة</div>
+          <p class="service-desc">تنفيذ مشاريع البناء السكنية والتجارية والصناعية بأحدث التقنيات وأجود مواد البناء مع الالتزام الكامل بالمواصفات الفنية.</p>
+          <a href="#contact" class="service-link">تواصل معنا ←</a>
+        </div>
+
+        <div class="service-card card-lift reveal">
+          <div class="service-icon">🏢</div>
+          <div class="service-title">التطوير العقاري</div>
+          <p class="service-desc">تطوير مشاريع عقارية متكاملة بدءاً من دراسة الجدوى والتخطيط وحتى التنفيذ والتسليم النهائي، بأسلوب احترافي متكامل.</p>
+          <a href="#contact" class="service-link">تواصل معنا ←</a>
+        </div>
+
+        <div class="service-card card-lift reveal">
+          <div class="service-icon">📐</div>
+          <div class="service-title">الاستشارات الهندسية</div>
+          <p class="service-desc">خدمات استشارية متخصصة في التصميم المعماري والإنشائي والإشراف على تنفيذ المشاريع، بفريق من المهندسين ذوي الخبرة العالية.</p>
+          <a href="#contact" class="service-link">تواصل معنا ←</a>
+        </div>
+
+        <div class="service-card card-lift reveal">
+          <div class="service-icon">🏠</div>
+          <div class="service-title">التشطيبات الداخلية</div>
+          <p class="service-desc">تشطيب وتصميم داخلي فاخر للوحدات السكنية والتجارية بأحدث الأساليب وأرقى الخامات لتلبية كافة الأذواق والميزانيات.</p>
+          <a href="#contact" class="service-link">تواصل معنا ←</a>
+        </div>
+
+        <div class="service-card card-lift reveal">
+          <div class="service-icon">🌆</div>
+          <div class="service-title">المشاريع التجارية</div>
+          <p class="service-desc">تصميم وتنفيذ المجمعات التجارية والإدارية والفنادق والمولات التجارية وفق أعلى المعايير الدولية مع ضمان الجودة الشاملة.</p>
+          <a href="#contact" class="service-link">تواصل معنا ←</a>
+        </div>
+
+        <div class="service-card card-lift reveal">
+          <div class="service-icon">🔧</div>
+          <div class="service-title">الصيانة والترميم</div>
+          <p class="service-desc">خدمات صيانة وترميم شاملة للمباني والمنشآت مع ضمان جودة التنفيذ وسرعة الاستجابة لاحتياجات العملاء في أسرع وقت ممكن.</p>
+          <a href="#contact" class="service-link">تواصل معنا ←</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════ PROJECTS ═══════════════════════════ -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="projects-header reveal">
+        <div>
+          <span class="tag-line">أعمالنا</span>
+          <h2 class="section-title">مشاريعنا</h2>
+          <div class="accent-bar"></div>
+        </div>
+        <a href="#contact" class="btn btn-outline">عرض الكل</a>
+      </div>
+
+      <div class="projects-grid">
+        <!-- PROJECT CARD — duplicate and fill with real data -->
+        <div class="project-card reveal">
+          <div class="project-img">
+            <img src="assets/images/projects/project-1.jpg" alt="مشروع 1"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="project-img-placeholder" style="display:none;flex-direction:column;align-items:center;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48">
+                <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+              </svg>
+              <p>صورة المشروع</p>
+            </div>
+            <span class="project-badge">منجز</span>
+          </div>
+          <div class="project-info">
+            <div class="project-category">سكني</div>
+            <div class="project-title">اسم المشروع الأول</div>
+            <div class="project-meta">
+              <span>📍 الموقع</span>
+              <span>📅 2024</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-img">
+            <img src="assets/images/projects/project-2.jpg" alt="مشروع 2"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="project-img-placeholder" style="display:none;flex-direction:column;align-items:center;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48">
+                <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+              </svg>
+              <p>صورة المشروع</p>
+            </div>
+            <span class="project-badge ongoing">جاري</span>
+          </div>
+          <div class="project-info">
+            <div class="project-category">تجاري</div>
+            <div class="project-title">اسم المشروع الثاني</div>
+            <div class="project-meta">
+              <span>📍 الموقع</span>
+              <span>📅 2024</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-img">
+            <img src="assets/images/projects/project-3.jpg" alt="مشروع 3"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="project-img-placeholder" style="display:none;flex-direction:column;align-items:center;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48">
+                <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+              </svg>
+              <p>صورة المشروع</p>
+            </div>
+            <span class="project-badge">منجز</span>
+          </div>
+          <div class="project-info">
+            <div class="project-category">إداري</div>
+            <div class="project-title">اسم المشروع الثالث</div>
+            <div class="project-meta">
+              <span>📍 الموقع</span>
+              <span>📅 2023</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════ WHY US ═══════════════════════════ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="why-wrap reveal">
+        <div class="why-grid">
+          <div class="why-text">
+            <span class="tag-line">لماذا نحن؟</span>
+            <h2 class="section-title">شريكك الموثوق في البناء والتطوير</h2>
+            <div class="accent-bar"></div>
+            <p class="section-subtitle">
+              نقدم تجربة استثنائية في كل مراحل المشروع، من الفكرة حتى التسليم
+            </p>
+            <div class="why-list">
+              <div class="why-item">
+                <div class="why-check">✓</div>
+                <div class="why-item-text">
+                  <h4>فريق هندسي متخصص ومؤهل</h4>
+                  <p>مهندسون ذوو خبرة واسعة في تخصصات متعددة</p>
+                </div>
+              </div>
+              <div class="why-item">
+                <div class="why-check">✓</div>
+                <div class="why-item-text">
+                  <h4>جودة مواد البناء مضمونة</h4>
+                  <p>نستخدم أجود الخامات من أفضل الموردين المعتمدين</p>
+                </div>
+              </div>
+              <div class="why-item">
+                <div class="why-check">✓</div>
+                <div class="why-item-text">
+                  <h4>أسعار تنافسية وشفافية في التعاملات</h4>
+                  <p>عقود واضحة بدون أي تكاليف خفية</p>
+                </div>
+              </div>
+              <div class="why-item">
+                <div class="why-check">✓</div>
+                <div class="why-item-text">
+                  <h4>ضمان ما بعد التسليم</h4>
+                  <p>نلتزم بصيانة المشروع بعد الاستلام</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="why-stats">
+            <div class="why-stat-box">
+              <span class="why-stat-num">+50</span>
+              <div class="why-stat-lbl">مشروع منجز بنجاح</div>
+            </div>
+            <div class="why-stat-box">
+              <span class="why-stat-num">+10</span>
+              <div class="why-stat-lbl">سنوات خبرة في السوق</div>
+            </div>
+            <div class="why-stat-box">
+              <span class="why-stat-num">+200</span>
+              <div class="why-stat-lbl">عميل راضٍ</div>
+            </div>
+            <div class="why-stat-box">
+              <span class="why-stat-num">100%</span>
+              <div class="why-stat-lbl">التزام بالمواعيد</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════ CONTACT ═══════════════════════════ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="services-header reveal" style="margin-bottom:3rem;">
+        <span class="tag-line">نحن هنا</span>
+        <h2 class="section-title">تواصل معنا</h2>
+        <div class="accent-bar"></div>
+        <p class="section-subtitle">تحدث مع فريقنا الآن — نحن سعيدون بمساعدتك</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="contact-info-card reveal">
+          <div class="contact-info-title">م. محمد الحسن</div>
+          <div class="contact-info-sub">المدير التنفيذي — ديار العز للتطوير العقاري</div>
+
+          <div class="contact-detail">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-detail-label">رقم الهاتف</div>
+              <div class="contact-detail-value" dir="ltr">+20 103 323 2243</div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <div class="contact-detail-label">البريد الإلكتروني</div>
+              <div class="contact-detail-value">info@diyar-alezz.com</div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-detail-label">العنوان</div>
+              <div class="contact-detail-value">القاهرة، جمهورية مصر العربية</div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <div class="contact-detail-label">ساعات العمل</div>
+              <div class="contact-detail-value">السبت – الخميس: 9 ص – 6 م</div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/201033232243?text=السلام%20عليكم%20م.%20محمد%20الحسن،%20أريد%20الاستفسار%20عن%20خدمات%20ديار%20العز%20للتطوير%20العقاري"
+             target="_blank" class="contact-whatsapp-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            راسلنا على واتساب
+          </a>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form reveal">
+          <div class="form-title">أرسل لنا رسالة</div>
+          <div class="form-sub">سيرد عليك فريقنا خلال 24 ساعة</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">الاسم الكامل *</label>
+              <input type="text" id="name" name="name" placeholder="اسمك الكريم" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">رقم الهاتف *</label>
+              <input type="tel" id="phone" name="phone" placeholder="+20 1XX XXX XXXX" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">البريد الإلكتروني</label>
+            <input type="email" id="email" name="email" placeholder="email@example.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="service">نوع الخدمة المطلوبة</label>
+            <select id="service" name="service">
+              <option value="">اختر الخدمة...</option>
+              <option value="contracting">مقاولات عامة</option>
+              <option value="development">تطوير عقاري</option>
+              <option value="consulting">استشارات هندسية</option>
+              <option value="finishing">تشطيبات داخلية</option>
+              <option value="commercial">مشاريع تجارية</option>
+              <option value="maintenance">صيانة وترميم</option>
+              <option value="other">أخرى</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">رسالتك *</label>
+            <textarea id="message" name="message" placeholder="اكتب تفاصيل مشروعك أو استفسارك هنا..." required></textarea>
+          </div>
+
+          <button type="button" class="btn btn-primary" style="width:100%;justify-content:center;padding:1rem;" onclick="sendWhatsApp()">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            إرسال عبر واتساب
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="footer-logo-img">
+              <img src="assets/images/logo/logo.svg" alt="ديار العز"
+                   onerror="this.style.display='none';" />
+            </div>
+            <div>
+              <div class="footer-brand-name">ديار العز للتطوير العقاري</div>
+              <div style="font-size:0.7rem;color:var(--teal);opacity:0.8;">Diyar Al-Ezz Real Estate</div>
+            </div>
+          </div>
+          <p class="footer-brand-desc">
+            شركة رائدة في مجال المقاولات والتطوير العقاري بمصر،
+            نبني بجودة ونسلّم في الوقت المحدد.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" title="فيسبوك">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-btn" title="انستغرام">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://wa.me/201033232243?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%AF%D9%8A%D8%A7%D8%B1%20%D8%A7%D9%84%D8%B9%D8%B2" target="_blank" class="social-btn" title="واتساب">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>روابط سريعة</h4>
+          <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="#services">خدماتنا</a></li>
+            <li><a href="#projects">مشاريعنا</a></li>
+            <li><a href="#contact">تواصل معنا</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>خدماتنا</h4>
+          <ul>
+            <li><a href="#services">المقاولات العامة</a></li>
+            <li><a href="#services">التطوير العقاري</a></li>
+            <li><a href="#services">الاستشارات الهندسية</a></li>
+            <li><a href="#services">التشطيبات الداخلية</a></li>
+            <li><a href="#services">الصيانة والترميم</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>تواصل معنا</h4>
+          <ul>
+            <li><a href="tel:+201033232243" dir="ltr">+20 103 323 2243</a></li>
+            <li><a href="mailto:info@diyar-alezz.com">info@diyar-alezz.com</a></li>
+            <li><a href="#contact">القاهرة، مصر</a></li>
+          </ul>
+          <a href="https://wa.me/201033232243?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%AF%D9%8A%D8%A7%D8%B1%20%D8%A7%D9%84%D8%B9%D8%B2" target="_blank"
+             style="display:inline-flex;align-items:center;gap:0.5rem;margin-top:1.25rem;padding:0.6rem 1.2rem;background:#25D366;color:#fff;border-radius:8px;font-size:0.85rem;font-weight:700;transition:all 0.25s ease;"
+             onmouseover="this.style.background='#1da851'" onmouseout="this.style.background='#25D366'">
+            واتساب مباشر
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2024 ديار العز للتطوير العقاري. جميع الحقوق محفوظة.</div>
+        <div>م. محمد الحسن — المدير التنفيذي</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════ WHATSAPP FLOAT ═══════════════════════════ -->
+  <a href="https://wa.me/201033232243?text=السلام%20عليكم%20م.%20محمد%20الحسن،%20أريد%20الاستفسار%20عن%20خدماتكم"
+     class="whatsapp-float" target="_blank" title="تواصل معنا على واتساب">
+    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+
+  <!-- ═══════════════════════════ JAVASCRIPT ═══════════════════════════ -->
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Mobile menu toggle
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+    }
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const navLinks = document.querySelectorAll('.navbar-menu a, .mobile-menu a');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => observer.observe(s));
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Counter animation
+    function animateCounter(el) {
+      const target = +el.dataset.target;
+      const duration = 1800;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current);
+      }, 16);
+    }
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+    // WhatsApp form send
+    function sendWhatsApp() {
+      const name    = document.getElementById('name').value.trim();
+      const phone   = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value.trim();
+      if (!name || !phone || !message) {
+        alert('يرجى ملء الحقول المطلوبة (الاسم، الهاتف، الرسالة)');
+        return;
+      }
+      const serviceMap = {
+        contracting: 'مقاولات عامة', development: 'تطوير عقاري',
+        consulting: 'استشارات هندسية', finishing: 'تشطيبات داخلية',
+        commercial: 'مشاريع تجارية', maintenance: 'صيانة وترميم', other: 'أخرى'
+      };
+      const svcLabel = serviceMap[service] || '';
+      let text = `السلام عليكم م. محمد الحسن،\n\n`;
+      text += `الاسم: ${name}\n`;
+      text += `الهاتف: ${phone}\n`;
+      if (svcLabel) text += `الخدمة المطلوبة: ${svcLabel}\n`;
+      text += `\nالرسالة:\n${message}`;
+      window.open('https://wa.me/201033232243?text=' + encodeURIComponent(text), '_blank');
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

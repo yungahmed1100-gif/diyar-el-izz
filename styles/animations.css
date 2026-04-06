@@ -1,0 +1,62 @@
+/* ── Page load animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes countUp {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.anim-fade-up   { animation: fadeUp 0.7s ease both; }
+.anim-fade-in   { animation: fadeIn 0.6s ease both; }
+.anim-slide-r   { animation: slideRight 0.7s ease both; }
+.anim-slide-l   { animation: slideLeft 0.7s ease both; }
+.anim-scale-in  { animation: scaleIn 0.6s ease both; }
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.35s; }
+.delay-4 { animation-delay: 0.5s; }
+.delay-5 { animation-delay: 0.65s; }
+
+/* Hero diagonal clip */
+.hero-clip { clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); }
+
+/* Card hover lift */
+.card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.13);
+}
+
+/* Gold shimmer on hover */
+.shimmer-hover:hover {
+  background: linear-gradient(90deg, var(--teal) 0%, var(--gold-light) 50%, var(--teal) 100%);
+  background-size: 200% auto;
+  animation: shimmer 1.5s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

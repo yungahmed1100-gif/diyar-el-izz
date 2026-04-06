@@ -1,0 +1,33 @@
+/* RTL-specific overrides */
+[dir="rtl"] body { direction: rtl; text-align: right; }
+
+[dir="rtl"] .navbar-menu { flex-direction: row; }
+[dir="rtl"] .navbar-menu li:last-child { margin-left: 0; margin-right: auto; }
+
+[dir="rtl"] .hero-cta { flex-direction: row; }
+
+[dir="rtl"] .service-card,
+[dir="rtl"] .project-card { text-align: right; }
+
+[dir="rtl"] .footer-col { text-align: right; }
+
+[dir="rtl"] .stat-number { font-feature-settings: "lnum"; }
+
+/* Arabic number rendering */
+[dir="rtl"] .stat-number,
+[dir="rtl"] .counter { font-variant-numeric: lining-nums; }
+
+/* Input fields */
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+  text-align: right;
+  direction: rtl;
+}
+
+/* Icon positioning flip for RTL arrows */
+[dir="rtl"] .arrow-icon { transform: rotate(180deg); }
+
+@media (max-width: 768px) {
+  [dir="rtl"] .navbar-menu { flex-direction: column; }
+}
